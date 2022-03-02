@@ -1,0 +1,247 @@
+/**********BASE CONFIGURATIONS**********/  
+body{
+    background-color: #151515;
+}
+.row{
+    padding-top: 10px;
+}
+p {
+    color: rgb(255, 255, 255);
+}
+/* 1행 왼쪽 */
+.my_up_left{
+	border-radius: 50px 10px 10px 10px;
+	margin-bottom: 30px;
+	padding-bottom:10px;
+	border: 1px solid #383737;
+	background-color: #3d3d3d;
+	color:white;
+	height:270px;
+}
+.my_up_left h4{
+	font-size:15px;
+	color:#ffffff;
+	margin-top: 10px;
+	margin-left: 30px;
+	align-self: center;
+}
+.my_up_left hr {
+	border: 3;
+	border-top: 1px solid #151515;
+	border-top-style: dashed;
+}
+.my_up_left:hover {
+	background-color: #4f4f4f;
+	-moz-box-shadow:    3px 3px 2px 0px #151515;
+    -webkit-box-shadow: 3px 3px 2px 0px #151515;
+    box-shadow:         3px 3px 2px 0px #151515;
+}
+
+
+/* 1행 오른쪽 */
+
+
+.my_up_right_1{
+	border-radius: 10px 50px 10px 10px;
+	margin-bottom: 30px;
+	padding-bottom: 4px;
+	border: 1px solid #383737;
+	background-color: #3d3d3d;
+	color:white;
+	height:120px;
+}
+.my_up_right_1 h4{
+	font-size:15px;
+	color:#ffffff;
+	margin-top: 10px;
+	margin-left: 30px;
+	align-self: center;
+}
+.my_up_right_1 hr {
+	border: 3;
+	border-top: 1px solid #151515;
+	border-top-style: dashed;
+}
+
+.my_up_right_2{
+	border-radius: 10px;
+	margin-bottom: 30px;
+	padding-bottom: 4px;
+	border: 1px solid #383737;
+	background-color: #3d3d3d;
+	color:white;
+	height:120px;
+}
+.my_up_right_2 h4{
+	font-size:15px;
+	color:#ffffff;
+	margin-top: 10px;
+	margin-left: 30px;
+	align-self: center;
+}
+.my_up_right_2 hr {
+	border: 3;
+	border-top: 1px solid #151515;
+	border-top-style: dashed;
+}
+
+/* 2행 왼쪽 */
+.my_down_left{
+	border-radius: 10px 10px 10px 50px;
+	margin-bottom: 30px;
+	padding-bottom:10px;
+	border: 1px solid #383737;
+	background-color: #3d3d3d;
+	color:white;
+	height:270px;
+}
+.my_down_left h4{
+	font-size:15px;
+	color:#ffffff;
+	margin-top: 10px;
+	margin-left: 30px;
+	align-self: center;
+}
+.my_down_left hr {
+	border: 3;
+	border-top: 1px solid #151515;
+	border-top-style: dashed;
+}
+
+/* 2행 오른쪽 */
+.my_down_right{
+	border-radius: 10px 10px 50px 10px;
+	margin-bottom: 30px;
+	padding-bottom:10px;
+	border: 1px solid #383737;
+	background-color: #3d3d3d;
+	color:white;
+	height:270px;
+}
+.my_down_right h4{
+	font-size:15px;
+	color:#ffffff;
+	margin-top: 10px;
+	margin-left: 30px;
+	align-self: center;
+}
+.my_down_right hr {
+	border: 3;
+	border-top: 1px solid #151515;
+	border-top-style: dashed;
+}
+
+
+/* 1행과 2행 가운데  */
+.my_up_mid{
+	border-radius: 10px;
+	margin-bottom: 30px;
+	padding-bottom:10px;
+	border: 1px solid #383737;
+	background-color: #3d3d3d;
+	color:white;
+	height:270px;
+}
+.my_up_mid h4{
+	font-size:15px;
+	color:#ffffff;
+	margin-top: 10px;
+	margin-left: 30px;
+	align-self: center;
+}
+.my_up_mid hr {
+	border: 3;
+	border-top: 1px solid #151515;
+	border-top-style: dashed;
+}
+
+
+.my_dash{
+	border-radius: 10px;
+	margin-bottom: 30px;
+	padding-bottom:10px;
+	border: 1px solid #383737;
+	background-color: #3d3d3d;
+	color:white;
+	height:270px;
+}
+.my_dash h4{
+	font-size:15px;
+	color:#ffffff;
+	margin-top: 10px;
+	margin-left: 30px;
+	align-self: center;
+}
+.my_dash hr {
+	border: 3;
+	border-top: 1px solid #151515;
+	border-top-style: dashed;
+}
+
+/* Font */
+
+
+.my_list {
+    cursor: default;
+}
+.my_list .window {
+    font-size: 0;
+    margin-top: -3px;
+    overflow: hidden;
+    margin-left: 0px;
+}
+.my_list .window li{
+    background-color:#3d3d3d;
+    margin-left:0px;
+}
+.my_list .window h4{
+    background-color:#3d3d3d;
+    margin-left:0px;
+	text-align: center;
+}
+/* .my_list {
+	margin-left: 5px;
+	border: none;
+}
+.my_list li{
+    border-top: 1px solid #888;
+    position: relative;
+    margin-left:-18px;
+}
+.my_list li h4{
+	font-size: 12px;
+	color: #ffffff;
+}
+.my_list li h4{
+	font-size: 12px;
+	color: #ffffff;
+} */
+
+.my_list hr{
+	border: 2;
+	border-top: 1px solid #151515;
+	border-top-style: dotted;
+}
+
+
+/***********MY CALENDAR ***********/
+.my_calendar{
+	margin-bottom: 30px;
+	border: 1px solid #383737;
+	background-color: #ffffff;
+	color:white;
+	max-width: 960px;
+	max-height:700px;
+}
+
+/***********FOOTER***********/
+.footer{
+	width: 100%;
+    background:#262626;
+    padding-top:25px;
+    padding-bottom: 40px;
+	border-top-style: solid;
+    border-top-width:8px;
+    border-top-color:#1d1d1d;
+    text-align:center
+}

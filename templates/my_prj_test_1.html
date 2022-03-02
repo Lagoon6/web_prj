@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- 반응형 캘린더 -->
+  <meta name="description" content="Calendar">
+  <meta name="author" content="Charles Anderson">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/calendar.css') }}">
+
+  <!-- 부트 스트랩 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <!-- 폰트 어썸 -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+  <!-- CSS -->
+  <!-- JavaScript -->
+  <!-- 내 Style -->
+  <link href="{{ url_for('static', filename='css/my_style.css') }}" rel="stylesheet">
+
+  <!-- 파이차트 -->
+  <link href="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+  <title>DashBoard를 만들자</title>
+
+
+
+</head>
+
+
+<body>
+  <!-- NAVIGATION MENU -->
+  <div class="row-1">
+    <div class="col=8">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand"><span><img src="{{url_for('static',filename='images/상단로고.png')}}">  K-digital 빅데이터 과정 DashBoard</a></span>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link-1</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link-2</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link-3</a>
+            </li>
+          </ul>
+    </div>
+    <div class="col-4">
+          <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-secondary" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+    </div>
+  </div>
+  <br><br><br><br>
+  <!--/.nav-collapse -->
+  <div class="container">
+
+	  <!-- 1행 -->     
+    <div class="row">
+      <!-- 1행 1열 출석률 파이 차트 -->
+      <div class="col-3">
+        <div class="my_up_left">
+          <h4><span style="color:#b2c831"><i class="fas fa-chart-pie"></i></span> Attendance status</h4>
+          <hr>  
+          <div>
+            <canvas id="chDonut1" height="270vh"></canvas>
+          </div>
+
+          <script>
+            var colors = ['#b2c831','#c4d468','#f8f8f8', '#151515'];/*파이차트 색 변경*/
+            var donutOptions = {
+                cutoutPercentage: 40, /*파이차트 도넛의 모양을 변경하는 것.*/
+                legend: {position: 'bottom', padding: 0, labels: {pointStyle: 'circle', usePointStyle: true, fontColor: "white"/*라벨 색 변경*/}}
+                };
+            var chDonutData1 = '{{ data_list }}';
+                  
+            var chDonut1 = document.getElementById("chDonut1");
+                if (chDonut1) {
+                  new Chart(chDonut1, { 
+                            type: 'pie',
+                            data: chDonutData1, 
+                            options: donutOptions,
+                            responsive: false,
+                            } );
+                }
+                if (chDonut1) {
+                  new Chart(chDonut1, { 
+                            type: 'pie',
+                            data: chDonutData1, 
+                            options: donutOptions,
+                            responsive: false,
+                            } );
+                }
+            </script>
+        </div>
+      </div><!-- 1행 1열 끝 -->
+
+      <!-- 1행 2열 개인 출석시간 누워있는 막대-->
+      <div class="col-6">
+        <div class="my_up_mid">
+          <h4><span style="color:#b2c831"><i class="fas fa-list-ul"></i></span> Attendance time</h4>
+          <hr>        
+
+        </div>
+      </div><!-- 1행 2열 끝 -->
+
+      <!-- 1행 3열 시간, 날씨 -->
+      <div class="col-3">
+
+      <!-- 시간 -->
+          <div class="my_up_right_1">
+            <h4><span style="color:#b2c831"><i class="fas fa-clock"></i></span> Current time</h4>
+            <hr>        
+
+          </div>
+      <!-- 날씨 -->
+          <div class="my_up_right_2">
+            <h4><span style="color:#b2c831"><i class="fas fa-temperature-high"></i></span> Current weather</h4>
+            <hr>         
+
+          </div>
+      </div><!-- 1행 3열 끝 -->
+    </div><!-- 1행 끝 -->
+
+
+	  <!-- 2행 -->     
+    <div class="row">
+      <!-- 2행 1열 -->
+      <div class="col-3">
+        <div class="my_down_left">
+          <h4><span style="color:#b2c831"><i class="fas fa-thumbs-up"></i></span> Attendance Best-5</h4>
+          <hr> 
+
+        </div>
+      </div>
+      <!-- 2행 2열 -->
+      <div class="col-3">
+        <div class="my_dash">
+          <h4><span style="color:#b2c831"><i class="fas fa-bell"></i></span> Notice</h4>
+          <hr> 
+          
+        </div>
+
+      </div>
+      <!-- 2행 3열 -->
+      <div class="col-3">
+        <div class="my_dash">
+          <h4><span style="color:#b2c831"><i class="fas fa-utensils"></i></span> Restaurant list</h4>
+          <hr> 
+          <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item no1 active">
+                <img src="{{url_for('static',filename='images/서천집_쭈삼.png')}}" class="d-block w-100" style="display: block; margin: 0 auto; border-radius: 10px; max-width: 220px; max-height: 210px;" >
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>서천집</h5>
+                  <p>쭈꾸미 삼겹살</p>
+                </div>
+              </div>
+              <div class="carousel-item no2">
+                <img src="{{url_for('static',filename='images/은행골.jpg')}}" class="d-block w-100" style="display: block; margin: 0 auto; border-radius: 10px; max-width: 220px; max-height: 210px;">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>은행골</h5>
+                  <p>초밥</p>
+                </div>
+              </div>
+              <div class="carousel-item no3">
+                <img src="{{url_for('static',filename='images/얌샘김밥.jpg')}}" class="d-block w-100" style="display: block; margin: 0 auto; border-radius: 10px; max-width: 220px; max-height: 210px;">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>얌샘김밥</h5>
+                  <p>모다기를 비롯한 각종 분식</p>
+                </div>
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+          
+        </div>
+
+      </div>
+      <!-- 2행 4열 -->
+      <div class="col-3">
+        <div class="my_down_right">
+          <h4><span style="color:#b2c831"><i class="fas fa-star"></i></span> Hall of Fame</h4>
+          <hr> 
+          <dib class="my_list">
+            <div class="window">
+              <li>
+                <img src="{{url_for('static',filename='images/임소연-modified.png')}}" style="float: left; margin-left: 10px; margin-bottom: 10px; width:50px; height:50px;">
+                <span><h4><strong>유한킴벌리 </strong><br>Process engineering</h4></span>
+              </li>
+
+              <hr>
+            </div>
+          </dib>
+        </div>
+
+      </div>
+    </div>
+
+
+  </div><!-- Container 끝 --> 
+
+
+  <div class="content">
+    <div class="calendar-container">
+      <div class="calendar"> 
+        <div class="year-header"> 
+          <span class="left-button" id="prev"> &lang; </span> 
+          <span class="year" id="label"></span> 
+          <span class="right-button" id="next"> &rang; </span>
+        </div> 
+        <table class="months-table"> 
+          <tbody>
+            <tr class="months-row">
+              <td class="month">Jan</td> 
+              <td class="month">Feb</td> 
+              <td class="month">Mar</td> 
+              <td class="month">Apr</td> 
+              <td class="month">May</td> 
+              <td class="month">Jun</td> 
+              <td class="month">Jul</td>
+              <td class="month">Aug</td> 
+              <td class="month">Sep</td> 
+              <td class="month">Oct</td>          
+              <td class="month">Nov</td>
+              <td class="month">Dec</td>
+            </tr>
+          </tbody>
+        </table> 
+        
+        <table class="days-table"> 
+          <td class="day">Sun</td> 
+          <td class="day">Mon</td> 
+          <td class="day">Tue</td> 
+          <td class="day">Wed</td> 
+          <td class="day">Thu</td> 
+          <td class="day">Fri</td> 
+          <td class="day">Sat</td>
+        </table> 
+        <div class="frame"> 
+          <table class="dates-table"> 
+              <tbody class="tbody">             
+              </tbody> 
+          </table>
+        </div> 
+        <button class="button" id="add-button">Add Event</button>
+      </div>
+    </div>
+    <div class="events-container">
+    </div>
+    <div class="dialog" id="dialog">
+        <h2 class="dialog-header"> Add New Event </h2>
+        <form class="form" id="form">
+          <div class="form-container" algin="center">
+            <label class="form-label" id="valueFromMyButton" for="name">Event name</label>
+            <input class="input" type="text" id="name" maxlength="36">
+            <label class="form-label" id="valueFromMyButton" for="count">Number of people to invite</label>
+            <input class="input" type="number" id="count" min="0" max="1000000" maxlength="7">
+            <input type="button" value="Cancel" class="button" id="cancel-button">
+            <input type="button" value="OK" class="button" id="ok-button">
+          </div>
+        </form>
+      </div>
+  </div>
+  <!-- Dialog Box-->
+  <script
+    src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous">
+  </script>
+  <script src="{{ url_for('static', filename='js/calendar.js') }}"></script>
+
+
+
+<!-- Footer -->
+<footer>
+  <div class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-lg-12">
+        <p><img src="{{url_for('static',filename='images/하단로고.png')}}" alt=""></p>
+        <p>2차 미니 프로젝트 Dash-Board / 4조 - 김정훈, 임용빈, 백지훈, 석호준</p>
+        </div>
+
+      </div><!-- /row -->
+    </div><!-- /container -->	
+  </div>
+</footer>
+</body>
+
+</html>
