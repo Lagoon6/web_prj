@@ -26,8 +26,8 @@ p {
 	align-self: center;
 }
 .my_up_left hr {
-	border: 3;
-	border-top: 1px solid #151515;
+	border: 3px;
+	border-top: 2px solid #151515;
 	border-top-style: dashed;
 }
 .my_up_left:hover {
@@ -59,8 +59,19 @@ p {
 }
 .my_up_right_1 hr {
 	border: 3;
-	border-top: 1px solid #151515;
+	border-top: 2px solid #151515;
 	border-top-style: dashed;
+}
+.my_up_right_1 p {
+	font-size: 25px;
+	color: white;
+	text-align: center;
+}
+.my_up_right_1:hover {
+	background-color: #4f4f4f;
+	-moz-box-shadow:    3px 3px 2px 0px #151515;
+    -webkit-box-shadow: 3px 3px 2px 0px #151515;
+    box-shadow:         3px 3px 2px 0px #151515;
 }
 
 .my_up_right_2{
@@ -79,10 +90,21 @@ p {
 	margin-left: 30px;
 	align-self: center;
 }
-.my_up_right_2 hr {
-	border: 3;
-	border-top: 1px solid #151515;
+.my_up_right_2 hr{
+	border: 3px;
+	border-top: 2px solid #151515;
 	border-top-style: dashed;
+}
+.my_up_right_2 p{
+	font-size: 15px;
+	color: white;
+	text-align: center;
+}
+.my_up_right_2:hover {
+	background-color: #4f4f4f;
+	-moz-box-shadow:    3px 3px 2px 0px #151515;
+    -webkit-box-shadow: 3px 3px 2px 0px #151515;
+    box-shadow:         3px 3px 2px 0px #151515;
 }
 
 /* 2행 왼쪽 */
@@ -104,8 +126,14 @@ p {
 }
 .my_down_left hr {
 	border: 3;
-	border-top: 1px solid #151515;
+	border-top: 2px solid #151515;
 	border-top-style: dashed;
+}
+.my_down_left:hover {
+	background-color: #4f4f4f;
+	-moz-box-shadow:    3px 3px 2px 0px #151515;
+    -webkit-box-shadow: 3px 3px 2px 0px #151515;
+    box-shadow:         3px 3px 2px 0px #151515;
 }
 
 /* 2행 오른쪽 */
@@ -127,8 +155,44 @@ p {
 }
 .my_down_right hr {
 	border: 3;
-	border-top: 1px solid #151515;
+	border-top: 2px solid #151515;
 	border-top-style: dashed;
+}
+.my_down_right:hover {
+	background-color: #4f4f4f;
+	-moz-box-shadow:    3px 3px 2px 0px #151515;
+    -webkit-box-shadow: 3px 3px 2px 0px #151515;
+    box-shadow:         3px 3px 2px 0px #151515;
+}
+.my_list {
+    cursor: default;
+}
+.my_list .window {
+    font-size: 0;
+    overflow: hidden;
+}
+.my_list .window li{
+    margin-left:0px;
+}
+.my_list .window li:hover {
+    background-color: #5d5b5b;
+}
+.my_list .window h4{
+	color: white;
+	margin-top: -1px;
+	font-size: 18px;
+	text-align: center;
+}
+.my_list .window h5{
+	color: white;
+	font-size: 14px;
+	text-align: center;
+}
+
+.my_list .window hr{
+	border: 2;
+	border-top: 1px solid #151515;
+	border-top-style: double;
 }
 
 
@@ -151,12 +215,17 @@ p {
 }
 .my_up_mid hr {
 	border: 3;
-	border-top: 1px solid #151515;
+	border-top: 2px solid #151515;
 	border-top-style: dashed;
 }
+.my_up_mid:hover {
+	background-color: #4f4f4f;
+	-moz-box-shadow:    3px 3px 2px 0px #151515;
+    -webkit-box-shadow: 3px 3px 2px 0px #151515;
+    box-shadow:         3px 3px 2px 0px #151515;
+}
 
-
-.my_dash{
+.my_dash_left{
 	border-radius: 10px;
 	margin-bottom: 30px;
 	padding-bottom:10px;
@@ -165,64 +234,130 @@ p {
 	color:white;
 	height:270px;
 }
-.my_dash h4{
+.my_dash_left p{
+	font-size:15px;
+	color: black;
+}
+.my_dash_left h4{
 	font-size:15px;
 	color:#ffffff;
 	margin-top: 10px;
 	margin-left: 30px;
 	align-self: center;
 }
-.my_dash hr {
+.my_dash_left h5{
+	font-size:15px;
+	color: black;
+}
+.my_dash_left hr {
 	border: 3;
-	border-top: 1px solid #151515;
+	border-top: 2px solid #151515;
 	border-top-style: dashed;
+}
+.my_dash_left:hover {
+	background-color: #4f4f4f;
+	-moz-box-shadow:    3px 3px 2px 0px #151515;
+    -webkit-box-shadow: 3px 3px 2px 0px #151515;
+    box-shadow:         3px 3px 2px 0px #151515;
+}
+
+
+.my_dash_right{
+	border-radius: 10px;
+	margin-bottom: 30px;
+	padding-bottom:10px;
+	border: 1px solid #383737;
+	background-color: #3d3d3d;
+	color:white;
+	height:270px;
+}
+.my_dash_right p{
+	font-size:15px;
+	color: black;
+}
+.my_dash_right h4{
+	font-size:15px;
+	color:#ffffff;
+	margin-top: 10px;
+	margin-left: 30px;
+	align-self: center;
+}
+.my_dash_right h5{
+	font-size:15px;
+	color: black;
+}
+.my_dash_right hr {
+	border: 3;
+	border-top: 2px solid #151515;
+	border-top-style: dashed;
+}
+.my_dash_right:hover {
+	background-color: #4f4f4f;
+	-moz-box-shadow:    3px 3px 2px 0px #151515;
+    -webkit-box-shadow: 3px 3px 2px 0px #151515;
+    box-shadow:         3px 3px 2px 0px #151515;
+}
+/* 2행 가운데 중에 NOTICE */
+.my_dash_left button{
+	color: white;
+	font-size: 12px;
+	background-color: #3d3d3d;
+	border-color: #3d3d3d;
+	padding: 0px;
+	text-align: left;
+}
+.my_dash_left li{
+	font-size:15px;
+	color: white;
+	background-color:#3d3d3d;
+	border-color: #3d3d3d;
+    padding: 0px;
+	margin-bottom: 10px;
+}
+.my_dash_left li i {
+    display: inline-block;
+	height: 30px;
+    max-height: 60px;
+    width: 6px;
+}
+.my_dash_left li .read {
+    background-color: #ddd;
+}
+.my_dash_left li .unread {
+    background: #b2c831;
+}
+
+.my_dash_left li:hover{
+	background-color: #5d5b5b;
+}
+/* Modal button */
+.modal-dialog button{
+	color: #151515;
+	background-color: white;
+	border-color: #151515;
 }
 
 /* Font */
 
 
-.my_list {
-    cursor: default;
+/*********** 캐러샐 Style ***********/
+.carousel-inner{
+	margin-top: -14px;
 }
-.my_list .window {
-    font-size: 0;
-    margin-top: -3px;
-    overflow: hidden;
-    margin-left: 0px;
+.carousel-inner h5{
+	text-shadow: -2px 0 white, 0 2px white, 2px 0 white, 0 -2px white;
+	color: #3d3d3d;
+	font-size: 28px;
 }
-.my_list .window li{
-    background-color:#3d3d3d;
-    margin-left:0px;
+.carousel-inner p{
+	text-shadow: -2px 0 #3d3d3d, 0 2px #3d3d3d, 2px 0 #3d3d3d, 0 -2px #3d3d3d;
+	color: white;
+	margin-bottom: -30px;
+	font-size: 20px;
 }
-.my_list .window h4{
-    background-color:#3d3d3d;
-    margin-left:0px;
-	text-align: center;
+.carousel-indicators{
+	margin-bottom: -22px;
 }
-/* .my_list {
-	margin-left: 5px;
-	border: none;
-}
-.my_list li{
-    border-top: 1px solid #888;
-    position: relative;
-    margin-left:-18px;
-}
-.my_list li h4{
-	font-size: 12px;
-	color: #ffffff;
-}
-.my_list li h4{
-	font-size: 12px;
-	color: #ffffff;
-} */
-
-.my_list hr{
-	border: 2;
-	border-top: 1px solid #151515;
-	border-top-style: dotted;
-}
-
 
 /***********MY CALENDAR ***********/
 .my_calendar{
@@ -238,8 +373,8 @@ p {
 .footer{
 	width: 100%;
     background:#262626;
-    padding-top:25px;
-    padding-bottom: 40px;
+    padding-top:17px;
+    padding-bottom: 25px;
 	border-top-style: solid;
     border-top-width:8px;
     border-top-color:#1d1d1d;

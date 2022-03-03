@@ -30,14 +30,13 @@
 
 </head>
 
-
 <body>
   <!-- NAVIGATION MENU -->
   <div class="row-1">
     <div class="col=8">
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
-        <a class="navbar-brand"><span><img src="{{url_for('static',filename='images/상단로고.png')}}">  K-digital 빅데이터 과정 DashBoard</a></span>
+        <a class="navbar-brand"><span><img src="{{ url_for('static',filename='images/상단로고.png') }}">  K-digital BigData DashBoard</a></span>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -47,13 +46,10 @@
               <a class="nav-link active" aria-current="page" href="#">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Link-1</a>
+              <a class="nav-link" href="#">/Link-1</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Link-2</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link-3</a>
+              <a class="nav-link" href="#">/Link-2</a>
             </li>
           </ul>
     </div>
@@ -79,7 +75,7 @@
           <h4><span style="color:#b2c831"><i class="fas fa-chart-pie"></i></span> Attendance status</h4>
           <hr>  
           <div>
-            <canvas id="chDonut1" height="270vh"></canvas>
+            <canvas id="chDonut1" height="200vh"></canvas>
           </div>
 
           <script>
@@ -88,17 +84,8 @@
                 cutoutPercentage: 40, /*파이차트 도넛의 모양을 변경하는 것.*/
                 legend: {position: 'bottom', padding: 0, labels: {pointStyle: 'circle', usePointStyle: true, fontColor: "white"/*라벨 색 변경*/}}
                 };
-            var chDonutData1 = '{{ data_list }}';
-                  
+            var chDonutData1 = {{ data_list["pie_list"] | tojson }};
             var chDonut1 = document.getElementById("chDonut1");
-                if (chDonut1) {
-                  new Chart(chDonut1, { 
-                            type: 'pie',
-                            data: chDonutData1, 
-                            options: donutOptions,
-                            responsive: false,
-                            } );
-                }
                 if (chDonut1) {
                   new Chart(chDonut1, { 
                             type: 'pie',
@@ -126,13 +113,24 @@
       <!-- 시간 -->
           <div class="my_up_right_1">
             <h4><span style="color:#b2c831"><i class="fas fa-clock"></i></span> Current time</h4>
-            <hr>        
+            <hr>
+            {% if data_list["time"].strftime("%H:%M:%S") > '12:00:00' %}
+              <p><strong>{{ data_list["time"].strftime("%H:%M:%S") }}</strong> PM</p> 
+            {% elif data_list["time"].strftime("%H:%M:%S") < '12:00:00' %}
+              <p><strong>{{ data_list["time"].strftime("%H:%M:%S") }}</strong> AM</p> 
+            {% endif %}
 
           </div>
       <!-- 날씨 -->
           <div class="my_up_right_2">
             <h4><span style="color:#b2c831"><i class="fas fa-temperature-high"></i></span> Current weather</h4>
-            <hr>         
+            <hr>
+            <p><span style="color:#b2c831"><i class="fas fa-cloud-sun-rain fa-3x"></i></span>
+              {{ data_list["temperature"][0] }}
+              날씨: {{ data_list["temperature"][1] }}<br>
+              최저 온도: {{ data_list["temperature"][2] }}
+              최고 온도: {{ data_list["temperature"][3] }}<br>  
+            </p>       
 
           </div>
       </div><!-- 1행 3열 끝 -->
@@ -151,16 +149,102 @@
       </div>
       <!-- 2행 2열 -->
       <div class="col-3">
-        <div class="my_dash">
+        <div class="my_dash_left">
           <h4><span style="color:#b2c831"><i class="fas fa-bell"></i></span> Notice</h4>
-          <hr> 
-          
-        </div>
+          <hr>
+          <ul class="list-group">
 
+            <!-- 공지사항 1 -->
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <i class="unread"></i>
+              &nbsp;&nbsp;
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                #1<br>금주 비대면 수업 공지
+              </button>
+              &nbsp;&nbsp;
+              <span class="badge rounded-pill" style="border-color: #b2c831;">3.02(수)</span>
+              <!-- Modal -->
+              <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="staticBackdropLabel">금주 비대면 수업 공지</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <p>금주 추가 확진자 발생이 우려되어 계속 비대면 진행합니다. 참고하세요~</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            
+            <!-- 공지사항 2 -->
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <i class="read"></i>
+              &nbsp;&nbsp;
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                #2<br>금일 오후 빡빡이 커피 지급 예정
+              </button>
+              &nbsp;&nbsp;
+              <span class="badge rounded-pill" style="border-color: #b2c831;">2.23(수)</span>
+              <!-- Modal -->
+              <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="staticBackdropLabel">금일 오후 빡빡이 커피 지급 예정</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <p>각 조의 조장들은 음료 취합하여 점심시간 전까지 문종훈 매니저님께 알려주세요~</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <!-- 공지사항 3 -->
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <i class="read"></i>
+              &nbsp;&nbsp;
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                #3<br>빅데이터 분석기사 교재 도착
+              </button>
+              &nbsp;&nbsp;
+              <span class="badge rounded-pill" style="border-color: #b2c831;">2.10(목)</span>
+              <!-- Modal -->
+              <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="staticBackdropLabel">빅데이터 분석기사 교재 도착</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <p>해당자들은 서명하고 받아가세요~</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+
+        </div>
       </div>
       <!-- 2행 3열 -->
       <div class="col-3">
-        <div class="my_dash">
+        <div class="my_dash_right">
           <h4><span style="color:#b2c831"><i class="fas fa-utensils"></i></span> Restaurant list</h4>
           <hr> 
           <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
@@ -168,27 +252,66 @@
               <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
               <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
               <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 5"></button>
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="5" aria-label="Slide 6"></button>
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="6" aria-label="Slide 7"></button>
             </div>
             <div class="carousel-inner">
               <div class="carousel-item no1 active">
-                <img src="{{url_for('static',filename='images/서천집_쭈삼.png')}}" class="d-block w-100" style="display: block; margin: 0 auto; border-radius: 10px; max-width: 220px; max-height: 210px;" >
+                <img src="{{ url_for('static',filename='images/슬로우켈리.PNG')}}" class="d-block w-100"
+                style="display: block; margin: 0 auto; border-radius: 10px; max-width: 300px; max-height: 200px;" >
                 <div class="carousel-caption d-none d-md-block">
-                  <h5>서천집</h5>
-                  <p>쭈꾸미 삼겹살</p>
+                  <h5>슬로우캘리</h5>
+                  <p>포케/샐러드</p>
                 </div>
               </div>
               <div class="carousel-item no2">
-                <img src="{{url_for('static',filename='images/은행골.jpg')}}" class="d-block w-100" style="display: block; margin: 0 auto; border-radius: 10px; max-width: 220px; max-height: 210px;">
+                <img src="{{ url_for('static',filename='images/동남집_갈비탕.PNG') }}" class="d-block w-100"
+                style="display: block; margin: 0 auto; border-radius: 10px; max-width: 300px; max-height: 200px;" >
                 <div class="carousel-caption d-none d-md-block">
-                  <h5>은행골</h5>
-                  <p>초밥</p>
+                  <h5>동남집</h5>
+                  <p>갈비탕/곰탕</p>
                 </div>
               </div>
               <div class="carousel-item no3">
-                <img src="{{url_for('static',filename='images/얌샘김밥.jpg')}}" class="d-block w-100" style="display: block; margin: 0 auto; border-radius: 10px; max-width: 220px; max-height: 210px;">
+                <img src="{{url_for('static',filename='images/빠오즈푸_빠오즈.PNG')}}" class="d-block w-100"
+                style="display: block; margin: 0 auto; border-radius: 10px; max-width: 300px; max-height: 200px;" >
                 <div class="carousel-caption d-none d-md-block">
-                  <h5>얌샘김밥</h5>
-                  <p>모다기를 비롯한 각종 분식</p>
+                  <h5>빠오즈푸</h5>
+                  <p>훈둔면/탄탄면</p>
+                </div>
+              </div>
+              <div class="carousel-item no4">
+                <img src="{{url_for('static',filename='images/서천집_쭈삼.PNG')}}" class="d-block w-100"
+                style="display: block; margin: 0 auto; border-radius: 10px; max-width: 300px; max-height: 200px;" >
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>서천집</h5>
+                  <p>쭈꾸미삼겹</p>
+                </div>
+              </div>
+              <div class="carousel-item no5">
+                <img src="{{url_for('static',filename='images/은행골.PNG')}}" class="d-block w-100"
+                style="display: block; margin: 0 auto; border-radius: 10px; max-width: 300px; max-height: 200px;" >
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>은행골</h5>
+                  <p>초밥/연어/광어</p>
+                </div>
+              </div>
+              <div class="carousel-item no6">
+                <img src="{{url_for('static',filename='images/순남시래기.PNG')}}" class="d-block w-100"
+                style="display: block; margin: 0 auto; border-radius: 10px; max-width: 300px; max-height: 200px;" >
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>순남시래기</h5>
+                  <p>시래기/묵</p>
+                </div>
+              </div>
+              <div class="carousel-item no7">
+                <img src="{{url_for('static',filename='images/오늘돈카츠.PNG')}}" class="d-block w-100"
+                style="display: block; margin: 0 auto; border-radius: 10px; max-width: 300px; max-height: 200px;" >
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>오늘돈카츠</h5>
+                  <p>등심/안심/치즈</p>
                 </div>
               </div>
             </div>
@@ -213,10 +336,14 @@
           <dib class="my_list">
             <div class="window">
               <li>
-                <img src="{{url_for('static',filename='images/임소연-modified.png')}}" style="float: left; margin-left: 10px; margin-bottom: 10px; width:50px; height:50px;">
-                <span><h4><strong>유한킴벌리 </strong><br>Process engineering</h4></span>
+                <img src="{{url_for('static',filename='images/임소연-modified.png')}}" style="float: left; margin-left: 5px; margin-bottom: 11px; width:50px; height:50px;">
+                <span><h4><strong>유한킴벌리(주) </strong></h4><br><h5>Process engineering</h5></span>
               </li>
-
+              <hr>
+              <li>
+                <img src="{{url_for('static',filename='images/김정훈-modified.png')}}" style="float: left; margin-left: 5px; margin-bottom: 11px; width:50px; height:50px;">
+                <span><h4><strong>KYOWON 교원 </strong></h4><br><h5>Data scientist</h5></span>
+              </li>
               <hr>
             </div>
           </dib>
@@ -240,30 +367,30 @@
         <table class="months-table"> 
           <tbody>
             <tr class="months-row">
-              <td class="month">Jan</td> 
-              <td class="month">Feb</td> 
-              <td class="month">Mar</td> 
-              <td class="month">Apr</td> 
-              <td class="month">May</td> 
-              <td class="month">Jun</td> 
-              <td class="month">Jul</td>
-              <td class="month">Aug</td> 
-              <td class="month">Sep</td> 
-              <td class="month">Oct</td>          
-              <td class="month">Nov</td>
-              <td class="month">Dec</td>
+              <td class="month"><strong> 1 </strong></td> 
+              <td class="month"><strong> 2 </strong></td> 
+              <td class="month"><strong> 3 </strong></td> 
+              <td class="month"><strong> 4 </strong></td> 
+              <td class="month"><strong> 5 </strong></td> 
+              <td class="month"><strong> 6 </strong></td> 
+              <td class="month"><strong> 7 </strong></td>
+              <td class="month"><strong> 8 </strong></td> 
+              <td class="month"><strong> 9 </strong></td> 
+              <td class="month"><strong> 10 </strong></td>          
+              <td class="month"><strong> 11 </strong></td>
+              <td class="month"><strong> 12 </strong></td>
             </tr>
           </tbody>
         </table> 
         
         <table class="days-table"> 
-          <td class="day">Sun</td> 
+          <td class="day" style="color: red;">Sun</td> 
           <td class="day">Mon</td> 
           <td class="day">Tue</td> 
           <td class="day">Wed</td> 
           <td class="day">Thu</td> 
           <td class="day">Fri</td> 
-          <td class="day">Sat</td>
+          <td class="day" style="color: blue;">Sat</td>
         </table> 
         <div class="frame"> 
           <table class="dates-table"> 
