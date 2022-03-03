@@ -94,28 +94,6 @@ def piechart():
     return render_template('my_prj_test_1.html',data_list = all_list)
 
 
-if __name__ == "__main__":
-    app.run(host="localhost", port=5000)
-
-
-apikey ="1c98556bab77208b58bc7cf6168ff0bb"
-city_list =["Seoul,KR"]
-api = "http://api.openweathermap.org/data/2.5/weather?q={city}&APPID={key}"
-k2C = lambda k: k -273.15
-
-for name in city_list:
-    url = api.format(city=name, key=apikey)
-    res = requests.get(url)
-    data = json.loads(res.text)
-    print("** 도시 = ", data["name"])
-    print("| 날씨 = ", data["weather"][0]["description"])
-    print("| 최저기온 = ", k2C(data["main"]["temp_min"]))
-    print("| 최고기온 = ", k2C(data["main"]["temp_max"]))
-    print("| 습도 = ", data["main"]["humidity"])
-    print("| 기압 = ", data["main"]["pressure"])
-    print("| 풍향 = ", data["wind"]["deg"])
-    print("| 풍속 = ", data["wind"]["speed"])
-    print(" ")
 
 
 if __name__ == "__main__":
