@@ -27,7 +27,7 @@ p {
 }
 .my_up_left hr {
 	border: 3px;
-	border-top: 2px solid #151515;
+	border: 2px solid #151515;
 	border-top-style: dashed;
 }
 .my_up_left:hover {
@@ -58,8 +58,8 @@ p {
 	align-self: center;
 }
 .my_up_right_1 hr {
-	border: 3;
-	border-top: 2px solid #151515;
+	border: 3px;
+	border: 2px solid #151515;
 	border-top-style: dashed;
 }
 .my_up_right_1 p {
@@ -92,7 +92,7 @@ p {
 }
 .my_up_right_2 hr{
 	border: 3px;
-	border-top: 2px solid #151515;
+	border: 2px solid #151515;
 	border-top-style: dashed;
 }
 .my_up_right_2 p{
@@ -125,8 +125,8 @@ p {
 	align-self: center;
 }
 .my_down_left hr {
-	border: 3;
-	border-top: 2px solid #151515;
+	border: 3px;
+	border: 2px solid #151515;
 	border-top-style: dashed;
 }
 .my_down_left:hover {
@@ -135,6 +135,33 @@ p {
     -webkit-box-shadow: 3px 3px 2px 0px #151515;
     box-shadow:         3px 3px 2px 0px #151515;
 }
+.divstyle2{
+	margin-top: 5px;
+}
+.col-sm-7{
+	margin-left: 17px;
+
+}
+
+/* 출석 베스트3 */
+.best{
+	border-radius: 0px 0px 10px 50px;
+	padding-bottom:0px;
+	border: 1px solid #3d3d3d;
+	background-color: #3d3d3d;
+	color:white;
+	height:210px;
+}
+.row .best_list{
+	margin-top: -18px;
+	height: 60px;
+}
+.best hr{
+	border: 1px;
+	border-top: 1px solid #151515;
+	border-top-style: double;
+}
+
 
 /* 2행 오른쪽 */
 .my_down_right{
@@ -154,8 +181,8 @@ p {
 	align-self: center;
 }
 .my_down_right hr {
-	border: 3;
-	border-top: 2px solid #151515;
+	border: 3px;
+	border: 2px solid #151515;
 	border-top-style: dashed;
 }
 .my_down_right:hover {
@@ -190,7 +217,7 @@ p {
 }
 
 .my_list .window hr{
-	border: 2;
+	border: 1px;
 	border-top: 1px solid #151515;
 	border-top-style: double;
 }
@@ -214,8 +241,8 @@ p {
 	align-self: center;
 }
 .my_up_mid hr {
-	border: 3;
-	border-top: 2px solid #151515;
+	border: 3px;
+	border: 2px solid #151515;
 	border-top-style: dashed;
 }
 .my_up_mid:hover {
@@ -233,6 +260,7 @@ p {
 	background-color: #3d3d3d;
 	color:white;
 	height:270px;
+	
 }
 .my_dash_left p{
 	font-size:15px;
@@ -250,8 +278,8 @@ p {
 	color: black;
 }
 .my_dash_left hr {
-	border: 3;
-	border-top: 2px solid #151515;
+	border: 3px;
+	border: 2px solid #151515;
 	border-top-style: dashed;
 }
 .my_dash_left:hover {
@@ -287,8 +315,8 @@ p {
 	color: black;
 }
 .my_dash_right hr {
-	border: 3;
-	border-top: 2px solid #151515;
+	border: 3px;
+	border: 2px solid #151515;
 	border-top-style: dashed;
 }
 .my_dash_right:hover {
@@ -297,6 +325,109 @@ p {
     -webkit-box-shadow: 3px 3px 2px 0px #151515;
     box-shadow:         3px 3px 2px 0px #151515;
 }
+
+/* 1행 가운데 중에 Progress bar */
+img {
+    border-radius: 50%;
+	margin-left: 10px;
+}
+
+.my_up_mid_scroll{
+	border-radius: 0px 0px 10px 10px;
+	margin-top: -18px;
+	padding-top: 18px;
+	border: 1px solid #3d3d3d;
+	background-color: #3d3d3d;
+	color:white;
+	height:245px;
+}
+.my_up_mid_scroll:hover{
+	background-color: #4f4f4f;
+	-moz-box-shadow:    3px 3px 2px 0px #151515;
+    -webkit-box-shadow: 3px 3px 2px 0px #151515;
+    box-shadow:         3px 3px 2px 0px #151515;
+}
+.my_up_mid_scroll hr{
+	border: 2px;
+	border-top: 2px solid #151515;
+	border-top-style: double;
+}
+
+/* 스크롤의 각 행들 */
+.row .my_scroll{
+	margin-top: -18px;
+	height: 60px;
+}
+
+/* 스크롤들의 첫 행 */
+.row .my_scroll_first{
+	height: 60px;
+}
+.divstyle{
+	margin-top: -20px;
+}
+.progress{
+	margin-top: 0px;
+}
+
+/* progress-bar 옵션 from 지훈님 */
+
+
+.col-md-9{
+	margin-left: 10px;
+}
+.progress-bar {
+	background-color: #b2c831;
+	height:20px;
+	text-align: right;
+	font-size: 15px;
+ }
+
+ 
+ .progress-meter {
+	min-height: 10px;
+	border-bottom: 1px solid rgb(170, 170, 170);
+ }
+ 
+ .progress-meter > .meter {
+	position: relative;
+	float: left;
+	min-height: 10px;
+	border-width: 0px;
+	border-style: solid;
+	border-color: rgb(160, 160, 160);
+ }
+ 
+ .progress-meter > .meter-left {
+	border-left-width: 1px;
+ }
+ 
+ .progress-meter > .meter-right {
+	float: right;
+	border-right-width: 1px;
+ }
+ 
+ .progress-meter > .meter-right:last-child {
+	border-left-width: 1px;
+ }
+ 
+ .progress-meter > .meter > .meter-text {
+	position: absolute;
+	display: inline-block;
+	margin-bottom: 5px;
+	bottom: -20px;
+	width: 100%;
+	font-size: 10px;
+	color: rgb(160, 160, 160);
+	text-align: left;
+ }
+ 
+ .progress-meter > .meter.meter-right > .meter-text {
+	text-align: right;
+ }
+
+
+
 /* 2행 가운데 중에 NOTICE */
 .my_dash_left button{
 	color: white;
@@ -306,6 +437,11 @@ p {
 	padding: 0px;
 	text-align: left;
 }
+.my_dash_left button:hover{
+	background-color: #5d5d5d;
+	border-color: #5d5d5d;
+}
+
 .my_dash_left li{
 	font-size:15px;
 	color: white;
@@ -327,16 +463,16 @@ p {
     background: #b2c831;
 }
 
-.my_dash_left li:hover{
-	background-color: #5d5b5b;
-}
+
 /* Modal button */
 .modal-dialog button{
 	color: #151515;
 	background-color: white;
 	border-color: #151515;
 }
-
+.modal-dialog button:hover{
+	background-color: #151515;
+}
 /* Font */
 
 
