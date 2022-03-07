@@ -218,28 +218,28 @@ function check_events(day, month, year) {
 var event_data = {
     "events": [
     {
-        "occasion": " Repeated Test Event ",
-        "invited_count": 120,
-        "year": 2017,
-        "month": 5,
-        "day": 10,
-        "cancelled": true
+        "occasion": " 정보처리기사 ",
+        "invited_count": 20,
+        "year": 2022,
+        "month": 3,
+        "day": 5,
+        "cancelled": false
     },
     {
-        "occasion": " Repeated Test Event ",
-        "invited_count": 120,
-        "year": 2017,
-        "month": 5,
-        "day": 10,
-        "cancelled": true
+        "occasion": " SQLD ",
+        "invited_count": 15,
+        "year": 2022,
+        "month": 3,
+        "day": 12,
+        "cancelled": false
     },
         {
-        "occasion": " Repeated Test Event ",
-        "invited_count": 120,
-        "year": 2017,
-        "month": 5,
-        "day": 10,
-        "cancelled": true
+        "occasion": " Second-poject PT ",
+        "invited_count": 22,
+        "year": 2022,
+        "month": 3,
+        "day": 7,
+        "cancelled": false
     },
     {
         "occasion": " Repeated Test Event ",

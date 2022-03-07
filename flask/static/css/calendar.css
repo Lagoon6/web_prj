@@ -164,9 +164,15 @@
 
 /* Days/months tables */
 .days-table, .dates-table, .months-table { 
+  
+  margin-left: 5px;
   border-collapse:separate; 
   text-align: center;
 } 
+.dates-table{
+  margin-left: 7px;
+  width: 350px;
+}
 .day { 
   height: 26px;
   width: 26px;
@@ -237,7 +243,7 @@
   z-index: 5;
   background: #fff;
   position:absolute;
-  width:415px;
+  width:500px;
   height: 500px;
   left:387px;
   border-top-right-radius:3px;
@@ -337,6 +343,7 @@
   }
   .day {
       padding: 0 7px;
+      font-size: .8rem;
   }
   .month {
       display: inline-block;

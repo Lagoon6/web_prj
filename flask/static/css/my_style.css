@@ -107,6 +107,38 @@ p {
     box-shadow:         3px 3px 2px 0px #151515;
 }
 
+/* 1행 오른쪽 날씨 */
+.col-7.mean{
+	margin-top: -30px;
+	margin-left: -7px;
+	text-align: center;
+}
+.icon{
+	margin-top: 5px;
+}
+.current-temp{
+	font-size: 15px;
+	margin-top: -5px;
+}
+
+.col-7.mean p{
+	font-size: 15px;
+}
+
+.col-5.min_max{
+	margin-top: -15px;
+	margin-left: -10px;
+	text-align: center;
+	align-self: center;
+}
+.col-5.min_max h5{
+	font-size: 15px;
+	color: blue;
+}
+.col-5.min_max p{
+	font-size: 15px;
+	color: red;
+}
 /* 2행 왼쪽 */
 .my_down_left{
 	border-radius: 10px 10px 10px 50px;
@@ -335,7 +367,7 @@ img {
 .my_up_mid_scroll{
 	border-radius: 0px 0px 10px 10px;
 	margin-top: -18px;
-	padding-top: 18px;
+	padding-bottom:0px;
 	border: 1px solid #3d3d3d;
 	background-color: #3d3d3d;
 	color:white;

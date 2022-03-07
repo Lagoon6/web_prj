@@ -13,7 +13,7 @@ app.config['SESSION TYPE']='filesystem'
 @app.route("/",methods=["POST","GET"])
 def login():
     con = m.connect(host="localhost",
-                user = "root", passwd= "dxa132",
+                user = "root", passwd= "",
                 db = "dashproject1", charset= "utf8")
     cur = con.cursor()
     cur.execute("select username,password from accounts ")
@@ -43,25 +43,15 @@ def login():
 @app.route("/main",methods=["POST","GET"])
 def piechart():
     current_time = datetime.now()
-    apikey ="1c98556bab77208b58bc7cf6168ff0bb"
-    city_list =["Seoul,KR"]
-    api = "http://api.openweathermap.org/data/2.5/weather?q={city}&APPID={key}"
-    k2C = lambda k: k -273.15
-
-    for name in city_list:
-        url = api.format(city=name, key=apikey)
-        res = requests.get(url)
-        data = json.loads(res.text)
-    
     con = m.connect(host="localhost",
-                user = "root", passwd= "dxa132",
+                user = "root", passwd= "",
                 db = "dashproject1", charset= "utf8")
     cur = con.cursor()
     cur.execute("select contact,attend,morningstart from morning ")
     res = cur.fetchall()
     cur.execute("select name, morningstart from morning ")
     res2 = cur.fetchall()
-    cur.execute("select name,attedance from attend order by attedance ASC limit 3 ")
+    cur.execute("select name,attedance from attend order by attedance DESC limit 3 ")
     res3 = cur.fetchall()
     con.close()
     attendance = {}
@@ -70,7 +60,8 @@ def piechart():
             continue
         else:
             diff = current_time-res2[i][1]
-            attendance[res2[i][0]] = diff.strftime("%H:%M")
+            ratio =round(100*(diff.hour*60 + diff.minute)/540,1)
+            attendance[res2[i][0]] = {"ratio": ratio, "times":diff.strftime("%H:%M")}
     attend_cnt =0
     late_attend_cnt = 0
     early_leave_cnt = 0
@@ -99,10 +90,10 @@ def piechart():
     }
     all_list = {}
     all_list["pie_list"] =pie_list
-    all_list["temperature"] = [data["name"], data["weather"][0]["description"], round(k2C(data["main"]["temp_min"]),0),round(k2C(data["main"]["temp_max"]),0)]
     all_list["time"] = current_time
     all_list["attendance_time"] = attendance
-    all_list["attendance_best"] = res3    
+    all_list["attendance_best"] = res3
+    
     return render_template('my_prj_test_1.html',data_list = all_list)
 
 
